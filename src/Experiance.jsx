@@ -18,7 +18,7 @@ const Experiance = () => {
         <boxGeometry />
         <meshBasicMaterial args={[{ color: "blue" }]} />
       </mesh>
-      <mesh position-y={-1} scale={[10, 10, 10]} rotation-x={-Math.PI * 0.5}>
+      <mesh position-y={-1} scale={[10, 10, 1]} rotation-x={-Math.PI * 0.5}>
         <planeGeometry />
         <meshBasicMaterial args={[{ color: "green" }]} />
       </mesh>
