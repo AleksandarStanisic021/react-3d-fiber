@@ -5,14 +5,17 @@ function App() {
   return (
     <div
       style={{
-        width: "100%",
-        height: "100%",
+        width: "80%",
+        height: "80%",
         position: "fixed",
         top: "0px",
       }}>
       <Canvas>
         <Experiance />
       </Canvas>
+      <div style={{ background: "orange", color: "green", padding: "1rem" }}>
+        COMPONENT
+      </div>
     </div>
   );
 }
