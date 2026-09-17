@@ -1,6 +1,4 @@
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { TorusKnotGeometry } from "three";
+import Experiance from "./Experiance";
 
 function App() {
   return (
@@ -12,12 +10,7 @@ function App() {
           position: "fixed",
           top: "0px",
         }}>
-        <Canvas>
-          <mesh>
-            <torusKnotGeometry />
-            <meshNormalMaterial />
-          </mesh>
-        </Canvas>
+        <Experiance />
       </div>
     </>
   );
