@@ -4,14 +4,14 @@ const Experiance = () => {
   return (
     <>
       <mesh position-x={-2}>
-        <sphereGeometry args={[1.3, 32, 32]} />
+        <sphereGeometry />
         <meshBasicMaterial args={[{ color: "crimson" }]} />
       </mesh>
-      <mesh position-x={2}>
+      <mesh scale={1} position={[2, 0, 2]}>
         <boxGeometry />
         <meshBasicMaterial args={[{ color: "blue" }]} />
       </mesh>
-      <mesh scale={[3, 2, 2]} rotateX={45}>
+      <mesh position-y={-1} scale={[10, 10, 10]} rotation-x={-Math.PI * 0.5}>
         <planeGeometry />
         <meshBasicMaterial args={[{ color: "green" }]} />
       </mesh>
