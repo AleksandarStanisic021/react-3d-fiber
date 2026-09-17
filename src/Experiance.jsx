@@ -3,9 +3,9 @@ import { color } from "three/tsl";
 const Experiance = () => {
   return (
     <>
-      <mesh>
+      <mesh scale={[1.3, 1, 1]}>
         <sphereGeometry args={[1.3, 32, 32]} />
-        <meshBasicMaterial args={[{ color: "red", wireframe: true }]} />
+        <meshBasicMaterial args={[{ color: "crimson" }]} />
       </mesh>
     </>
   );
