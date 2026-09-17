@@ -5,8 +5,8 @@ import { color } from "three/tsl";
 const Experiance = () => {
   const boxRef = useRef();
 
-  useFrame(() => {
-    boxRef.current.rotation.y += +0.03;
+  useFrame((state, delta) => {
+    boxRef.current.rotation.y += delta * 2;
   });
   return (
     <>
