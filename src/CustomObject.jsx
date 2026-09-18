@@ -1,5 +1,3 @@
-import { BoxGeometry, Mesh } from "three";
-
 const CustomObject = () => {
   return (
     <mesh>
