@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { color } from "three/tsl";
+import { OrbitControls } from "@react-three/drei";
 
 const Experiance = () => {
   const boxRef = useRef();
@@ -8,11 +8,20 @@ const Experiance = () => {
   useFrame((state, delta) => {
     boxRef.current.rotation.y += delta * 2;
   });
+
   return (
     <>
+      <OrbitControls
+        enableDamping
+        dampingFactor={0.05}
+        maxPolarAngle={Math.PI / 1.9}
+        minDistance={3}
+        maxDistance={12}
+      />
+
       <mesh position-x={-2}>
         <sphereGeometry />
-        <meshBasicMaterial args={[{ color: "crimson" }]} />
+        <meshBasicMaterial args={[{ color: "orange" }]} />
       </mesh>
       <mesh ref={boxRef} scale={1} position={[2, 0, 2]}>
         <boxGeometry />
