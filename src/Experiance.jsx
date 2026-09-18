@@ -2,6 +2,8 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { OrbitControls } from "@react-three/drei";
 
+import { MeshStandardMaterial } from "three/webgpu";
+
 const Experiance = () => {
   const boxRef = useRef();
 
@@ -11,6 +13,7 @@ const Experiance = () => {
 
   return (
     <>
+      <directionalLight />
       <OrbitControls
         enableDamping
         dampingFactor={0.05}
@@ -23,15 +26,15 @@ const Experiance = () => {
 
       <mesh position-x={-2}>
         <sphereGeometry />
-        <meshBasicMaterial args={[{ color: "orange" }]} />
+        <meshStandardMaterial args={[{ color: "orange" }]} />
       </mesh>
       <mesh ref={boxRef} scale={1} position={[2, -0.5, 2]}>
         <boxGeometry />
-        <meshBasicMaterial args={[{ color: "blue" }]} />
+        <meshStandardMaterial args={[{ color: "blue" }]} />
       </mesh>
       <mesh position-y={-1} scale={[10, 10, 1]} rotation-x={-Math.PI * 0.5}>
         <planeGeometry />
-        <meshBasicMaterial args={[{ color: "green" }]} />
+        <meshStandardMaterial args={[{ color: "green" }]} />
       </mesh>
     </>
   );
