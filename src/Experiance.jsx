@@ -14,6 +14,7 @@ const Experiance = () => {
   return (
     <>
       <directionalLight />
+      <ambientLight color={"red"} />
       <OrbitControls
         enableDamping
         dampingFactor={0.05}
