@@ -17,13 +17,15 @@ const Experiance = () => {
         maxPolarAngle={Math.PI / 1.9}
         minDistance={3}
         maxDistance={12}
+        autoRotate={true}
+        enablePan={false}
       />
 
       <mesh position-x={-2}>
         <sphereGeometry />
         <meshBasicMaterial args={[{ color: "orange" }]} />
       </mesh>
-      <mesh ref={boxRef} scale={1} position={[2, 0, 2]}>
+      <mesh ref={boxRef} scale={1} position={[2, -0.5, 2]}>
         <boxGeometry />
         <meshBasicMaterial args={[{ color: "blue" }]} />
       </mesh>
