@@ -25,7 +25,7 @@ const Exp = () => {
         <meshStandardMaterial args={[{ color: "orange" }]} />
         <mesh ref={boxRef} scale={1} position={[2, -0.5, 2]}>
           <boxGeometry />
-          <meshStandardMaterial args={[{ color: "darkblue" }]} />
+          <meshStandardMaterial args={[{ color: "purple" }]} />
         </mesh>
         <mesh position-y={-1} scale={[10, 10, 1]} rotation-x={-Math.PI * 0.5}>
           <planeGeometry />
