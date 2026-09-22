@@ -1,6 +1,13 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { Html, OrbitControls, TransformControls } from "@react-three/drei";
+import {
+  Float,
+  Text,
+  MeshReflectorMaterial,
+  Html,
+  OrbitControls,
+  TransformControls,
+} from "@react-three/drei";
 
 const Exp = () => {
   const boxRef = useRef();
@@ -41,8 +48,19 @@ const Exp = () => {
 
       <mesh position-y={-1} scale={[10, 10, 1]} rotation-x={-Math.PI * 0.5}>
         <planeGeometry />
-        <meshStandardMaterial args={[{ color: "green" }]} />
+        <MeshReflectorMaterial color={"gold"} />
       </mesh>
+
+      <Float speed={2} rotationIntensity={0.8} floatIntensity={1.2}>
+        <Text
+          color="salmon"
+          position={[1.5, 2.2, 0.5]}
+          fontSize={0.5}
+          anchorX="center"
+          anchorY="middle">
+          I Love 3D!
+        </Text>
+      </Float>
     </>
   );
 };
