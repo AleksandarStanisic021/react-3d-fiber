@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { OrbitControls, TransformControls } from "@react-three/drei";
+import { Html, OrbitControls, TransformControls } from "@react-three/drei";
 
 const Exp = () => {
   const boxRef = useRef();
@@ -12,6 +12,7 @@ const Exp = () => {
       <directionalLight position={[1, 2, 3]} />
       <ambientLight color={"white"} intensity={0.5} />
       <OrbitControls
+        makeDefault
         enableDamping
         dampingFactor={0.05}
         maxPolarAngle={Math.PI / 1.9}
@@ -29,8 +30,13 @@ const Exp = () => {
       <mesh ref={boxRef} scale={2}>
         <boxGeometry position-x={2} />
         <meshStandardMaterial args={[{ color: "purple" }]} />
+        <Html center position={[1, 1, 0]}>
+          <div style={{ background: "green", padding: 5 }}>
+            <h1 style={{ color: "red" }}>Test</h1>
+            <p>Super Box</p>
+          </div>
+        </Html>
       </mesh>
-
       <TransformControls object={boxRef} />
 
       <mesh position-y={-1} scale={[10, 10, 1]} rotation-x={-Math.PI * 0.5}>
