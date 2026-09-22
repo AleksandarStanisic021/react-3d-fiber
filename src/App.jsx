@@ -1,5 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import Experiance from "./Experiance";
+import Exp from "./Exp";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Canvas>
         <Experiance />
       </Canvas>
+      <Exp />
     </div>
   );
 }
