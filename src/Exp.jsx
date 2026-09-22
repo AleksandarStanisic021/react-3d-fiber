@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, TransformControls } from "@react-three/drei";
 
 const Exp = () => {
   const boxRef = useRef();
@@ -9,8 +9,8 @@ const Exp = () => {
 
   return (
     <>
-      <directionalLight />
-      <ambientLight color={"white"} intensity={1} />
+      <directionalLight position={[1, 2, 3]} />
+      <ambientLight color={"white"} intensity={0.5} />
       <OrbitControls
         enableDamping
         dampingFactor={0.05}
@@ -20,17 +20,22 @@ const Exp = () => {
         autoRotate={true}
         enablePan={false}
       />
-      <mesh position-x={-2}>
+
+      <mesh position-x={-3}>
         <sphereGeometry />
         <meshStandardMaterial args={[{ color: "orange" }]} />
-        <mesh ref={boxRef} scale={1} position={[2, -0.5, 2]}>
+      </mesh>
+
+      <TransformControls position-x={2} position-y={1}>
+        <mesh scale={2}>
           <boxGeometry />
           <meshStandardMaterial args={[{ color: "purple" }]} />
         </mesh>
-        <mesh position-y={-1} scale={[10, 10, 1]} rotation-x={-Math.PI * 0.5}>
-          <planeGeometry />
-          <meshStandardMaterial args={[{ color: "green" }]} />
-        </mesh>
+      </TransformControls>
+
+      <mesh position-y={-1} scale={[10, 10, 1]} rotation-x={-Math.PI * 0.5}>
+        <planeGeometry />
+        <meshStandardMaterial args={[{ color: "green" }]} />
       </mesh>
     </>
   );
