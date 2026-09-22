@@ -26,12 +26,12 @@ const Exp = () => {
         <meshStandardMaterial args={[{ color: "orange" }]} />
       </mesh>
 
-      <TransformControls position-x={2} position-y={1}>
-        <mesh scale={2}>
-          <boxGeometry />
-          <meshStandardMaterial args={[{ color: "purple" }]} />
-        </mesh>
-      </TransformControls>
+      <mesh ref={boxRef} scale={2}>
+        <boxGeometry position-x={2} />
+        <meshStandardMaterial args={[{ color: "purple" }]} />
+      </mesh>
+
+      <TransformControls object={boxRef} />
 
       <mesh position-y={-1} scale={[10, 10, 1]} rotation-x={-Math.PI * 0.5}>
         <planeGeometry />
