@@ -12,9 +12,8 @@ function App() {
         top: "0px",
       }}>
       <Canvas>
-        <Experiance />
+        <Exp />
       </Canvas>
-      <Exp />
     </div>
   );
 }
