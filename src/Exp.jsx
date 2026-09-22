@@ -10,7 +10,7 @@ const Exp = () => {
   return (
     <>
       <directionalLight />
-      <ambientLight color={"white"} intensity={2} />
+      <ambientLight color={"white"} intensity={1} />
       <OrbitControls
         enableDamping
         dampingFactor={0.05}
@@ -25,7 +25,7 @@ const Exp = () => {
         <meshStandardMaterial args={[{ color: "orange" }]} />
         <mesh ref={boxRef} scale={1} position={[2, -0.5, 2]}>
           <boxGeometry />
-          <meshStandardMaterial args={[{ color: "blue" }]} />
+          <meshStandardMaterial args={[{ color: "darkblue" }]} />
         </mesh>
         <mesh position-y={-1} scale={[10, 10, 1]} rotation-x={-Math.PI * 0.5}>
           <planeGeometry />
