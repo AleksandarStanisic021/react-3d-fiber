@@ -3,8 +3,13 @@ import { useRef } from "react";
 import { OrbitControls } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import { MeshReflectorMaterial } from "@react-three/drei";
+import { useControls } from "leva";
 
 const Debug = () => {
+  const { position } = useControls({
+    position: 1.2,
+  });
+
   return (
     <>
       <directionalLight position={[1, 2, 3]} />
@@ -20,7 +25,7 @@ const Debug = () => {
         enablePan={false}
       />
 
-      <mesh position-x={2}>
+      <mesh position-x={position}>
         <sphereGeometry />
         <meshStandardMaterial args={[{ color: "orange" }]} />
       </mesh>
