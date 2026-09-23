@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import Experiance from "./Experiance";
 import Exp from "./Exp";
+import Debug from "./Debug";
 
 function App() {
   return (
@@ -11,9 +12,8 @@ function App() {
         position: "fixed",
         top: "0px",
       }}>
-      <Canvas>
-        <Exp />
-      </Canvas>
+      <Canvas></Canvas>
+      <Debug />
     </div>
   );
 }
