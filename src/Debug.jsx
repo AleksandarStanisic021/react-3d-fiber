@@ -1,18 +1,23 @@
-import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-import { OrbitControls } from "@react-three/drei";
-import { MeshStandardMaterial } from "three";
-import { MeshReflectorMaterial } from "@react-three/drei";
+import { OrbitControls, MeshReflectorMaterial } from "@react-three/drei";
 import { useControls } from "leva";
 
 const Debug = () => {
-  const { position } = useControls({
+  const { position, color } = useControls("sphere", {
     position: {
-      value: -2,
+      value: 2,
       max: 4,
       min: -3,
       step: 0.01,
     },
+    color: "#ffa600",
+  });
+
+  const { boxposition, boxcolor } = useControls("cube", {
+    boxposition: {
+      value: { x: 0, y: 0 },
+      step: 0.01,
+    },
+    boxcolor: "#e42712",
   });
 
   return (
@@ -32,12 +37,12 @@ const Debug = () => {
 
       <mesh position-x={position}>
         <sphereGeometry />
-        <meshStandardMaterial args={[{ color: "orange" }]} />
+        <meshStandardMaterial args={[{ color: color }]} />
       </mesh>
 
-      <mesh position={[-2, -0.5, 0]}>
+      <mesh position={[boxposition.x, boxposition.y, 0]}>
         <boxGeometry />
-        <meshStandardMaterial args={[{ color: "red" }]} />
+        <meshStandardMaterial color={boxcolor} />
       </mesh>
 
       <mesh scale={[10, 10, 1]} position-y={-1} rotation-x={-Math.PI * 0.5}>
