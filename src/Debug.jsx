@@ -1,6 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { OrbitControls } from "@react-three/drei";
+import { MeshStandardMaterial } from "three";
 
 const Debug = () => {
   return (
@@ -18,9 +19,19 @@ const Debug = () => {
         enablePan={false}
       />
 
-      <mesh>
-        <boxGeometry position-x={2} />
-        <meshStandardMaterial args={[{ color: "purple" }]} />
+      <mesh position-x={2}>
+        <sphereGeometry />
+        <meshStandardMaterial args={[{ color: "orange" }]} />
+      </mesh>
+
+      <mesh position={[-2, -0.5, 0]}>
+        <boxGeometry />
+        <meshStandardMaterial args={[{ color: "red" }]} />
+      </mesh>
+
+      <mesh scale={[10, 10, 1]} position-y={-1} rotation-x={-Math.PI * 0.5}>
+        <planeGeometry />
+        <meshStandardMaterial color={"green"} />
       </mesh>
     </>
   );
