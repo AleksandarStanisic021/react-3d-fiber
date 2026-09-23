@@ -2,6 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { OrbitControls } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
+import { MeshReflectorMaterial } from "@react-three/drei";
 
 const Debug = () => {
   return (
@@ -31,7 +32,7 @@ const Debug = () => {
 
       <mesh scale={[10, 10, 1]} position-y={-1} rotation-x={-Math.PI * 0.5}>
         <planeGeometry />
-        <meshStandardMaterial color={"green"} />
+        <MeshReflectorMaterial color={"green"} />
       </mesh>
     </>
   );
