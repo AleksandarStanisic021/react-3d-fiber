@@ -12,8 +12,9 @@ function App() {
         position: "fixed",
         top: "0px",
       }}>
-      <Canvas></Canvas>
-      <Debug />
+      <Canvas>
+        <Debug />
+      </Canvas>
     </div>
   );
 }
