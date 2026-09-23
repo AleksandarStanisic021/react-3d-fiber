@@ -7,7 +7,12 @@ import { useControls } from "leva";
 
 const Debug = () => {
   const { position } = useControls({
-    position: 1.2,
+    position: {
+      value: -2,
+      max: 4,
+      min: -3,
+      step: 0.01,
+    },
   });
 
   return (
