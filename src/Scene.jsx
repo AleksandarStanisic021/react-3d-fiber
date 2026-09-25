@@ -20,9 +20,10 @@ const Scene = () => {
         <sphereGeometry />
         <meshStandardMaterial args={[{ color: "orange" }]} />
       </mesh>
+
       <mesh scale={1} position={[2, -0.5, 2]}>
         <boxGeometry />
-        <meshStandardMaterial args={[{ color: "blue" }]} />
+        <meshStandardMaterial args={[{ color: "red" }]} />
       </mesh>
 
       <mesh scale={[10, 10, 1]} position-y={-1} rotation-x={-Math.PI * 0.5}>
