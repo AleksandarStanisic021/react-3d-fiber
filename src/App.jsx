@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import Experiance from "./Experiance";
 import Exp from "./Exp";
+import Scene from "./Scene";
 import Debug from "./Debug";
 import { Leva } from "leva";
 
@@ -17,6 +18,7 @@ function App() {
       <Canvas>
         <Debug />
       </Canvas>
+      <Scene />
     </div>
   );
 }
