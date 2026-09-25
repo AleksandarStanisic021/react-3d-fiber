@@ -3,12 +3,12 @@ import Experiance from "./Experiance";
 import Exp from "./Exp";
 import Scene from "./Scene";
 import Debug from "./Debug";
-import { cloneUniforms } from "three/src/renderers/shaders/UniformsUtils.js";
+import * as THREE from "three";
 
 function App() {
-  const created = ({ gl }) => {
-    console.log(gl);
-    gl.setClearColor("#1e1efe");
+  const created = ({ scene }) => {
+    console.log(scene);
+    scene.background = new THREE.Color("purple");
   };
 
   return (
@@ -19,7 +19,7 @@ function App() {
         position: "fixed",
         top: "0px",
       }}>
-      <Canvas onCreated={created}>
+      <Canvas shadows onCreated={created}>
         <Scene />
       </Canvas>
     </div>

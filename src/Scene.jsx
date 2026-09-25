@@ -3,7 +3,7 @@ import { OrbitControls, MeshReflectorMaterial } from "@react-three/drei";
 const Scene = () => {
   return (
     <>
-      <directionalLight position={[1, 2, 3]} />
+      <directionalLight castShadow position={[1, 2, 3]} />
       <ambientLight color={"white"} intensity={0.5} />
       <OrbitControls
         makeDefault
@@ -16,17 +16,21 @@ const Scene = () => {
         enablePan={false}
       />
 
-      <mesh position-x={-2}>
+      <mesh castShadow position-x={-2}>
         <sphereGeometry />
         <meshStandardMaterial args={[{ color: "orange" }]} />
       </mesh>
 
-      <mesh scale={1} position={[2, -0.5, 2]}>
+      <mesh castShadow scale={1} position={[2, -0.5, 2]}>
         <boxGeometry />
         <meshStandardMaterial args={[{ color: "red" }]} />
       </mesh>
 
-      <mesh scale={[10, 10, 1]} position-y={-1} rotation-x={-Math.PI * 0.5}>
+      <mesh
+        receiveShadow
+        scale={[10, 10, 1]}
+        position-y={-1}
+        rotation-x={-Math.PI * 0.5}>
         <planeGeometry />
         <MeshReflectorMaterial color={"green"} />
       </mesh>
