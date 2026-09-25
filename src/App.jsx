@@ -3,7 +3,6 @@ import Experiance from "./Experiance";
 import Exp from "./Exp";
 import Scene from "./Scene";
 import Debug from "./Debug";
-import { Leva } from "leva";
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
         position: "fixed",
         top: "0px",
       }}>
-      <Leva collapsed />
       <Canvas>
         <Scene />
       </Canvas>
