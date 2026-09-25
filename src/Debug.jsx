@@ -35,12 +35,12 @@ const Debug = () => {
         enablePan={false}
       />
 
-      <mesh position-x={position}>
-        <sphereGeometry />
+      <mesh position-x={-4}>
+        <sphereGeometry position-x={-2} />
         <meshStandardMaterial args={[{ color: color }]} />
       </mesh>
 
-      <mesh position={[boxposition.x, boxposition.y, 0]}>
+      <mesh position-x={4}>
         <boxGeometry />
         <meshStandardMaterial color={boxcolor} />
       </mesh>

@@ -16,9 +16,8 @@ function App() {
       }}>
       <Leva collapsed />
       <Canvas>
-        <Debug />
+        <Scene />
       </Canvas>
-      <Scene />
     </div>
   );
 }

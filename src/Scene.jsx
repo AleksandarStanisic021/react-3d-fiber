@@ -1,4 +1,3 @@
-import React from "react";
 import { OrbitControls, MeshReflectorMaterial } from "@react-three/drei";
 
 const Scene = () => {
@@ -17,14 +16,13 @@ const Scene = () => {
         enablePan={false}
       />
 
-      <mesh>
+      <mesh position-x={-2}>
         <sphereGeometry />
-        <meshStandardMaterial color={"blue"} />
+        <meshStandardMaterial args={[{ color: "orange" }]} />
       </mesh>
-
-      <mesh>
+      <mesh scale={1} position={[2, -0.5, 2]}>
         <boxGeometry />
-        <meshStandardMaterial color="red" />
+        <meshStandardMaterial args={[{ color: "blue" }]} />
       </mesh>
 
       <mesh scale={[10, 10, 1]} position-y={-1} rotation-x={-Math.PI * 0.5}>
