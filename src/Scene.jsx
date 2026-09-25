@@ -1,10 +1,37 @@
 import React from "react";
+import { OrbitControls, MeshReflectorMaterial } from "@react-three/drei";
 
 const Scene = () => {
   return (
-    <div>
-      <p>Sc</p>
-    </div>
+    <>
+      <directionalLight position={[1, 2, 3]} />
+      <ambientLight color={"white"} intensity={0.5} />
+      <OrbitControls
+        makeDefault
+        enableDamping
+        dampingFactor={0.05}
+        maxPolarAngle={Math.PI / 1.9}
+        minDistance={3}
+        maxDistance={12}
+        autoRotate={true}
+        enablePan={false}
+      />
+
+      <mesh>
+        <sphereGeometry />
+        <meshStandardMaterial color={"blue"} />
+      </mesh>
+
+      <mesh>
+        <boxGeometry />
+        <meshStandardMaterial color="red" />
+      </mesh>
+
+      <mesh scale={[10, 10, 1]} position-y={-1} rotation-x={-Math.PI * 0.5}>
+        <planeGeometry />
+        <MeshReflectorMaterial color={"green"} />
+      </mesh>
+    </>
   );
 };
 
