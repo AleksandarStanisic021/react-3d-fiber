@@ -1,4 +1,6 @@
 import { Sky, OrbitControls, MeshReflectorMaterial } from "@react-three/drei";
+import { useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 const Loading = () => {
   return (
