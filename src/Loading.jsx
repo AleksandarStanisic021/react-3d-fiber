@@ -5,8 +5,6 @@ import { GLTFLoader } from "three/examples/jsm/Addons.js";
 const Loading = () => {
   const model = useLoader(GLTFLoader, "./hamburger.glb");
 
-  console.log(model);
-
   return (
     <>
       <directionalLight castShadow shadow-mapSize={1024} position={[1, 2, 3]} />
@@ -27,7 +25,7 @@ const Loading = () => {
         <planeGeometry />
         <MeshReflectorMaterial color={"green"} />
       </mesh>
-      <primitive object={model.scene} position-y={-1} scale={0.5} />
+      <primitive object={model.scene} position-y={-1} scale={0.35} />
     </>
   );
 };
