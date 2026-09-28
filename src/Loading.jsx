@@ -26,11 +26,6 @@ const Loading = () => {
         <meshStandardMaterial args={[{ color: "red" }]} />
       </mesh>
 
-      <mesh scale={1} position={[2.5, -0.5, 1]}>
-        <boxGeometry />
-        <meshStandardMaterial args={[{ color: "blue" }]} />
-      </mesh>
-
       <mesh scale={[10, 10, 1]} position-y={-1} rotation-x={-Math.PI * 0.5}>
         <planeGeometry />
         <MeshReflectorMaterial color={"green"} />
