@@ -3,6 +3,10 @@ import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 const Loading = () => {
+  const model = useLoader(GLTFLoader, "./hamburger.glb");
+
+  console.log(model);
+
   return (
     <>
       <directionalLight castShadow shadow-mapSize={1024} position={[1, 2, 3]} />
