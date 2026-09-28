@@ -4,13 +4,9 @@ import Exp from "./Exp";
 import Scene from "./Scene";
 import Debug from "./Debug";
 import * as THREE from "three";
+import Loading from "./Loading";
 
 function App() {
-  const created = ({ scene }) => {
-    console.log(scene);
-    scene.background = new THREE.Color("purple");
-  };
-
   return (
     <div
       style={{
@@ -19,8 +15,8 @@ function App() {
         position: "fixed",
         top: "0px",
       }}>
-      <Canvas shadows onCreated={created}>
-        <Scene />
+      <Canvas>
+        <Loading />
       </Canvas>
     </div>
   );
