@@ -3,6 +3,7 @@ import {
   Text,
   MeshReflectorMaterial,
   Html,
+  useTexture,
   OrbitControls,
   TransformControls,
 } from "@react-three/drei";
@@ -12,7 +13,9 @@ import { useGLTF } from "@react-three/drei";
 
 const Portal = () => {
   const { nodes } = useGLTF("./model/portal.glb");
-  console.log(nodes);
+  const texture = useTexture("./model/baked.jpg");
+  texture.flipY = false;
+
   return (
     <>
       <directionalLight position={[1, 2, 3]} />
@@ -28,8 +31,12 @@ const Portal = () => {
         enablePan={false}
       />
 
-      <mesh geometry={nodes.baked.geometry} />
-      <Html></Html>
+      <mesh geometry={nodes.baked.geometry}>
+        <meshBasicMaterial map={texture} />
+      </mesh>
+      <Html>
+        <h1>Portal</h1>
+      </Html>
     </>
   );
 };
