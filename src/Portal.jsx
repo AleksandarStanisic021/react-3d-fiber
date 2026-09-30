@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 import {
   Sparkles,
   Center,
@@ -13,14 +15,26 @@ import { Color, MeshNormalMaterial } from "three";
 
 import { useGLTF } from "@react-three/drei";
 
-import portalVertex from "./shaders/portal/vertex.glsl";
-import portalFragment from "./shaders/portal/fragment.glsl";
+import portalVertex from "./shaders/portal/vertex.glsl?raw";
+import portalFragment from "./shaders/portal/fragment.glsl?raw";
 
 const Portal = () => {
   const { nodes } = useGLTF("./model/portal.glb");
   const texture = useTexture("./model/baked.jpg");
   texture.flipY = false;
   const sparkleColor = new Color().setHSL(Math.random(), 0.9, 0.68);
+  const portalMaterial = useRef(null);
+  const shaderUniforms = useRef({
+    uTime: { value: 0 },
+    uColorStart: { value: new Color("#7028e8") },
+    uColorEnd: { value: new Color("#7dff35") },
+  });
+
+  useFrame(({ clock }) => {
+    if (portalMaterial.current) {
+      portalMaterial.current.uniforms.uTime.value = clock.elapsedTime;
+    }
+  });
 
   return (
     <>
@@ -55,7 +69,12 @@ const Portal = () => {
           geometry={nodes.portalLight.geometry}
           position={nodes.portalLight.position}
           rotation={nodes.portalLight.rotation}>
-          <shaderMaterial />
+          <shaderMaterial
+            ref={portalMaterial}
+            vertexShader={portalVertex}
+            fragmentShader={portalFragment}
+            uniforms={shaderUniforms.current}
+          />
         </mesh>
 
         <Sparkles

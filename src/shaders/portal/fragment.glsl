@@ -83,24 +83,23 @@ float cnoise(vec3 P)
 
 void main()
 {
-    // Displace the UV
-    vec2 displacedUv = vUv + cnoise(vec3(vUv * 5.0, uTime * 0.1));
+    vec2 portalUv = vUv - vec2(0.5);
+    vec2 movingUv = portalUv + vec2(uTime * 0.12, -uTime * 0.06);
+    float radius = length(portalUv) * 2.0;
+    float angle = atan(portalUv.y, portalUv.x);
 
-    // Perlin noise
-    float strength = cnoise(vec3(displacedUv * 5.0, uTime * 0.2));
+    float noise = cnoise(vec3(movingUv * 4.0, uTime * 0.2));
+    float swirlAngle = angle + uTime * 1.2 + radius * 4.2 + noise * 0.7;
+    float spiral = sin(swirlAngle * 3.0 - radius * 18.0);
+    float clouds = cnoise(vec3(movingUv * 6.0, uTime * 0.3));
+    float strength = smoothstep(-0.55, 0.65, spiral * 0.55 + clouds * 0.45);
 
-    // Outer glow
-    float outerGlow = distance(vUv, vec2(0.5)) * 5.0 - 1.4;
-    strength += outerGlow;
-
-    // Apply cool step
-    strength += step(- 0.2, strength) * 0.8;
-
-    // // Clamp the value from 0 to 1
-    // strength = clamp(strength, 0.0, 1.0);
-
-    // Final color
     vec3 color = mix(uColorStart, uColorEnd, strength);
+    float centerGlow = 1.0 - smoothstep(0.0, 0.75, radius);
+    color = mix(color, vec3(1.0), centerGlow * 0.18);
+    float flashWave = sin(uTime * 4.0 + radius * 22.0 - angle * 3.0);
+    float flash = pow(max(flashWave, 0.0), 10.0);
+    color = mix(color, vec3(0.72, 1.0, 0.38), flash * 0.9);
 
     gl_FragColor = vec4(color, 1.0);
 }
