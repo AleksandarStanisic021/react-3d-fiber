@@ -9,14 +9,18 @@ import {
   OrbitControls,
   TransformControls,
 } from "@react-three/drei";
-import { MeshNormalMaterial } from "three";
+import { Color, MeshNormalMaterial } from "three";
 
 import { useGLTF } from "@react-three/drei";
+
+import portalVertex from "./shaders/portal/vertex.glsl";
+import portalFragment from "./shaders/portal/fragment.glsl";
 
 const Portal = () => {
   const { nodes } = useGLTF("./model/portal.glb");
   const texture = useTexture("./model/baked.jpg");
   texture.flipY = false;
+  const sparkleColor = new Color().setHSL(Math.random(), 0.9, 0.68);
 
   return (
     <>
@@ -50,9 +54,18 @@ const Portal = () => {
         <mesh
           geometry={nodes.portalLight.geometry}
           position={nodes.portalLight.position}
-          rotation={nodes.portalLight.rotation}></mesh>
+          rotation={nodes.portalLight.rotation}>
+          <shaderMaterial />
+        </mesh>
 
-        <Sparkles position-y={1} scale={[4, 2, 4]} size={2} />
+        <Sparkles
+          position-y={1}
+          scale={[4, 2, 4]}
+          size={2}
+          speed={0.5}
+          count={100}
+          color={sparkleColor}
+        />
       </Center>
     </>
   );
