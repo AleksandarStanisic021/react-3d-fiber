@@ -1,4 +1,5 @@
 import {
+  Sparkles,
   Center,
   Float,
   Text,
@@ -50,6 +51,8 @@ const Portal = () => {
           geometry={nodes.portalLight.geometry}
           position={nodes.portalLight.position}
           rotation={nodes.portalLight.rotation}></mesh>
+
+        <Sparkles position-y={1} scale={[4, 2, 4]} size={2} />
       </Center>
     </>
   );
