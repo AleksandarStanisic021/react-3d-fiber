@@ -10,6 +10,7 @@ import {
   useTexture,
   OrbitControls,
   TransformControls,
+  Trail,
 } from "@react-three/drei";
 import { Color, MeshNormalMaterial } from "three";
 
@@ -24,15 +25,26 @@ const Portal = () => {
   texture.flipY = false;
   const sparkleColor = new Color().setHSL(Math.random(), 0.9, 0.68);
   const portalMaterial = useRef(null);
+  const energyRef = useRef(null);
   const shaderUniforms = useRef({
     uTime: { value: 0 },
-    uColorStart: { value: new Color("#7028e8") },
+    uColorStart: { value: new Color("#c026ff") },
     uColorEnd: { value: new Color("#7dff35") },
   });
 
   useFrame(({ clock }) => {
+    const time = clock.elapsedTime;
+
     if (portalMaterial.current) {
-      portalMaterial.current.uniforms.uTime.value = clock.elapsedTime;
+      portalMaterial.current.uniforms.uTime.value = time;
+    }
+
+    if (energyRef.current) {
+      energyRef.current.position.set(
+        Math.cos(time * 1.3) * 0.8,
+        Math.sin(time * 1.3) * 0.5,
+        0.12,
+      );
     }
   });
 
@@ -76,6 +88,13 @@ const Portal = () => {
             uniforms={shaderUniforms.current}
           />
         </mesh>
+
+        <Trail width={0.12} length={8} color="#a855f7">
+          <mesh ref={energyRef} scale={0.08}>
+            <sphereGeometry args={[1, 16, 16]} />
+            <meshBasicMaterial color="#b8ff4a" toneMapped={false} />
+          </mesh>
+        </Trail>
 
         <Sparkles
           position-y={1}
