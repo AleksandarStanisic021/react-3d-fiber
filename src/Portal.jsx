@@ -1,4 +1,5 @@
 import {
+  Center,
   Float,
   Text,
   MeshReflectorMaterial,
@@ -31,12 +32,19 @@ const Portal = () => {
         enablePan={false}
       />
 
-      <mesh geometry={nodes.baked.geometry}>
-        <meshBasicMaterial map={texture} />
-      </mesh>
-      <Html>
-        <h1>Portal</h1>
-      </Html>
+      <Center>
+        <mesh geometry={nodes.baked.geometry}>
+          <meshBasicMaterial map={texture} />
+        </mesh>
+        <mesh
+          geometry={nodes.poleLightA.geometry}
+          position={nodes.poleLightA.position}
+        />
+        <mesh
+          geometry={nodes.poleLightB.geometry}
+          position={nodes.poleLightB.position}
+        />
+      </Center>
     </>
   );
 };
