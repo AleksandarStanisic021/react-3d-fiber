@@ -29,6 +29,7 @@ const Portal = () => {
       />
 
       <mesh geometry={nodes.baked.geometry} />
+      <Html></Html>
     </>
   );
 };
