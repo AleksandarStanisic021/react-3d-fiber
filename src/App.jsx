@@ -5,6 +5,7 @@ import Scene from "./Scene";
 import Debug from "./Debug";
 import * as THREE from "three";
 import Loading from "./Loading";
+import Portal from "./Portal";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         top: "0px",
       }}>
       <Canvas>
-        <Loading />
+        <Portal />
       </Canvas>
     </div>
   );
