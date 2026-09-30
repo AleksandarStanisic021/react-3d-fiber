@@ -16,7 +16,7 @@ function App() {
         position: "fixed",
         top: "0px",
       }}>
-      <Canvas>
+      <Canvas flat>
         <Portal />
       </Canvas>
     </div>
