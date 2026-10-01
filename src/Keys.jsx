@@ -1,6 +1,18 @@
 import { OrbitControls } from "@react-three/drei";
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 
 const Keys = () => {
+  const boxRef = useRef();
+
+  const eventHandler = (event) => {
+    console.log("Key pressed:", event.key);
+  };
+
+  useFrame((state, delta) => {
+    boxRef.current.rotation.y += delta;
+  });
+
   return (
     <>
       <directionalLight position={[1, 2, 3]} />
@@ -16,9 +28,9 @@ const Keys = () => {
         enablePan={false}
       />
 
-      <mesh scale={2} position-y={1}>
+      <mesh ref={boxRef} onClick={eventHandler} scale={2} position-y={1}>
         <boxGeometry />
-        <meshStandardMaterial args={[{ color: "orange" }]} />
+        <meshStandardMaterial args={[{ color: "blue" }]} />
       </mesh>
 
       <mesh rotation-x={-Math.PI * 0.5} scale={12.5}>
