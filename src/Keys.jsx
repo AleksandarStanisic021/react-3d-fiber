@@ -40,6 +40,7 @@ const Keys = () => {
         <boxGeometry />
         <meshStandardMaterial args={[{ color: "blue" }]} />
       </mesh>
+
       <mesh
         position-z={1}
         position-x={-3}
