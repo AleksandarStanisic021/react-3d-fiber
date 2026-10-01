@@ -16,9 +16,14 @@ const Keys = () => {
         enablePan={false}
       />
 
-      <mesh scale={2}>
-        <boxGeometry position-x={2} />
-        <meshStandardMaterial args={[{ color: "yellow" }]} />
+      <mesh scale={2} position-y={1}>
+        <boxGeometry />
+        <meshStandardMaterial args={[{ color: "orange" }]} />
+      </mesh>
+
+      <mesh rotation-x={-Math.PI * 0.5} scale={12.5}>
+        <planeGeometry />
+        <meshStandardMaterial args={[{ color: "green" }]} />
       </mesh>
     </>
   );
