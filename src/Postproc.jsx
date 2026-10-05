@@ -26,7 +26,7 @@ const Postproc = () => {
 
       <mesh ref={boxRef} scale={2} position-y={1}>
         <boxGeometry />
-        <meshStandardMaterial args={[{ color: "blue" }]} />
+        <meshStandardMaterial args={[{ color: "teal" }]} />
       </mesh>
 
       <mesh position-z={1} position-x={-3} position-y={1}>
