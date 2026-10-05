@@ -1,6 +1,8 @@
 import { OrbitControls } from "@react-three/drei";
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import { Vignette, EffectComposer } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 
 const Postproc = () => {
   const boxRef = useRef();
@@ -11,6 +13,14 @@ const Postproc = () => {
 
   return (
     <>
+      <EffectComposer>
+        <Vignette
+          eskil={false}
+          offset={0.1}
+          darkness={1.1}
+          blendFunction={BlendFunction.NORMAL}
+        />
+      </EffectComposer>
       <directionalLight position={[1, 2, 3]} />
       <ambientLight color={"white"} intensity={0.5} />
       <OrbitControls
