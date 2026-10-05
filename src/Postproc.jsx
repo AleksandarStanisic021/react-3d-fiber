@@ -25,7 +25,7 @@ const Postproc = () => {
           darkness={1.1}
           blendFunction={BlendFunction.NORMAL}
         />
-        <Glitch />
+
         <Bloom
           mipmapBlur
           intensity={0.5}
@@ -48,12 +48,12 @@ const Postproc = () => {
 
       <mesh ref={boxRef} scale={2} position-y={1}>
         <boxGeometry />
-        <meshStandardMaterial args={[{ color: "teal" }]} />
+        <meshStandardMaterial color="blue" />
       </mesh>
 
       <mesh position-z={1} position-x={-3} position-y={1}>
         <sphereGeometry />
-        <meshStandardMaterial color={[6, 0, 0]} />
+        <meshStandardMaterial emissive="blue" color={[6, 0, 0]} />
       </mesh>
 
       <mesh rotation-x={-Math.PI * 0.5} scale={12.5}>
