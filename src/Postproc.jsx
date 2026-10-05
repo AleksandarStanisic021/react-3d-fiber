@@ -5,12 +5,6 @@ import { useFrame } from "@react-three/fiber";
 const Postproc = () => {
   const boxRef = useRef();
 
-  const eventHandler = (event) => {
-    boxRef.current.material.color.set(
-      `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-    );
-  };
-
   useFrame((state, delta) => {
     boxRef.current.rotation.y += delta;
   });
@@ -30,24 +24,12 @@ const Postproc = () => {
         enablePan={false}
       />
 
-      <mesh
-        ref={boxRef}
-        onClick={eventHandler}
-        scale={2}
-        position-y={1}
-        onPointerOver={(e) => (document.body.style.cursor = "pointer")}
-        onPointerOut={(e) => (document.body.style.cursor = "default")}>
+      <mesh ref={boxRef} scale={2} position-y={1}>
         <boxGeometry />
         <meshStandardMaterial args={[{ color: "blue" }]} />
       </mesh>
 
-      <mesh
-        position-z={1}
-        position-x={-3}
-        position-y={1}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}>
+      <mesh position-z={1} position-x={-3} position-y={1}>
         <sphereGeometry />
         <meshStandardMaterial args={[{ color: "orange" }]} />
       </mesh>

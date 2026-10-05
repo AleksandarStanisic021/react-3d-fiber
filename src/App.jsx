@@ -7,6 +7,7 @@ import * as THREE from "three";
 import Loading from "./Loading";
 import Portal from "./Portal";
 import Keys from "./Keys";
+import Postproc from "./Postproc";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         top: "0px",
       }}>
       <Canvas flat>
-        <Keys />
+        <Postproc />
       </Canvas>
     </div>
   );
