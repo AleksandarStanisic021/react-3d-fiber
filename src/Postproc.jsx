@@ -27,6 +27,7 @@ const Postproc = () => {
         />
         <Glitch />
         <Bloom
+          mipmapBlur
           intensity={0.5}
           luminanceThreshold={0.1}
           luminanceSmoothing={0.025}
@@ -52,7 +53,7 @@ const Postproc = () => {
 
       <mesh position-z={1} position-x={-3} position-y={1}>
         <sphereGeometry />
-        <meshStandardMaterial args={[{ color: "orange" }]} />
+        <meshStandardMaterial color={[6, 0, 0]} />
       </mesh>
 
       <mesh rotation-x={-Math.PI * 0.5} scale={12.5}>
