@@ -5,7 +5,7 @@ import { OrbitControls } from "@react-three/drei";
 const Portfolio = () => {
   return (
     <>
-      <OrbitControls enableDamping />
+      <OrbitControls makeDefault enableDamping />
       <mesh scale={1}>
         <boxGeometry />
         <meshNormalMaterial />
