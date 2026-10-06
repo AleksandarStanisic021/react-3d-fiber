@@ -1,6 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import {
+  Html,
   ContactShadows,
   PresentationControls,
   Float,
@@ -18,9 +19,12 @@ const Portfolio = () => {
           <mesh scale={2}>
             <boxGeometry />
             <MeshReflectorMaterial color="red" />
+            <Html transform>
+              <p>Welcome to my portfolio!</p>
+              <iframe src="https://bruno-simon.com/html" />
+            </Html>
           </mesh>
         </Float>
-        <ContactShadows position={-1.0} />
       </PresentationControls>
     </>
   );
