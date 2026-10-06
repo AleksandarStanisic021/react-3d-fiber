@@ -8,6 +8,7 @@ import Loading from "./Loading";
 import Portal from "./Portal";
 import Keys from "./Keys";
 import Postproc from "./Postproc";
+import Portfolio from "./Portfolio";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         top: "0px",
       }}>
       <Canvas flat>
-        <Postproc />
+        <Portfolio />
       </Canvas>
     </div>
   );
