@@ -19,7 +19,7 @@ const Portfolio = () => {
           <mesh scale={2}>
             <boxGeometry />
             <MeshReflectorMaterial color="red" />
-            <Html transform>
+            <Html distanceFactor={2} transform>
               <p>Welcome to my portfolio!</p>
               <iframe src="https://bruno-simon.com/html" />
             </Html>
