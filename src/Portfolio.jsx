@@ -2,6 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import {
   Html,
+  Text,
   ContactShadows,
   PresentationControls,
   Float,
@@ -24,6 +25,9 @@ const Portfolio = () => {
               <iframe src="https://bruno-simon.com/html" />
             </Html>
           </mesh>
+          <Text color="orange" position={[0, 2, 0]}>
+            Cool Box
+          </Text>
         </Float>
       </PresentationControls>
     </>
