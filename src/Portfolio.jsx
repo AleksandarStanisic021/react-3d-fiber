@@ -1,11 +1,12 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 
 const Portfolio = () => {
   return (
     <>
       <OrbitControls makeDefault enableDamping />
+      <Environment preset="city" />
       <mesh scale={1}>
         <boxGeometry />
         <meshNormalMaterial />
