@@ -45,6 +45,18 @@ const Fizics = () => {
         </RigidBody>
 
         <RigidBody>
+          <mesh
+            castShadow
+            receiveShadow
+            scale={0.5}
+            position-x={-1.5}
+            position-y={5}>
+            <sphereGeometry />
+            <meshStandardMaterial color="blue" />
+          </mesh>
+        </RigidBody>
+
+        <RigidBody>
           <mesh castShadow receiveShadow scale={1} position={[2, 3.5, 2]}>
             <boxGeometry />
             <meshStandardMaterial color="purple" />
