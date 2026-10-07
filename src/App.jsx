@@ -20,7 +20,10 @@ function App() {
         position: "fixed",
         top: "0px",
       }}>
-      <Canvas flat>
+      <Canvas
+        shadows
+        camera={{ position: [0, 0, 10], fov: 45 }}
+        gl={{ antialias: true }}>
         <Fizics />
       </Canvas>
     </div>
