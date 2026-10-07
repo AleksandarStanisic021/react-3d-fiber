@@ -30,9 +30,15 @@ const Fizics = () => {
         autoRotate={true}
         enablePan={false}
       />
+
       <Physics>
         <RigidBody>
-          <mesh castShadow receiveShadow position-x={-2} position-y={4.5}>
+          <mesh
+            castShadow
+            receiveShadow
+            scale={0.5}
+            position-x={-2}
+            position-y={4.5}>
             <sphereGeometry />
             <meshStandardMaterial color="orange" />
           </mesh>
@@ -53,7 +59,7 @@ const Fizics = () => {
             scale={[10, 10, 1]}
             rotation-x={-Math.PI * 0.5}>
             <boxGeometry />
-            <meshStandardMaterial color="green" />
+            <meshStandardMaterial color="darkgreen" />
           </mesh>
         </RigidBody>
       </Physics>
