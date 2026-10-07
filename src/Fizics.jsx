@@ -1,13 +1,9 @@
 import { useFrame } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { useRef } from "react";
+import { Physics, RigidBody } from "@react-three/rapier";
 
 const Fizics = () => {
-  const boxRef = useRef();
-
-  useFrame((state, delta) => {
-    boxRef.current.rotation.y += delta * 2;
-  });
   return (
     <>
       <ambientLight color="azure" intensity={0.8} />
@@ -15,8 +11,8 @@ const Fizics = () => {
         castShadow
         position={[4, 8, 5]}
         intensity={2}
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
         shadow-camera-near={0.1}
         shadow-camera-far={30}
         shadow-camera-left={-8}
@@ -34,28 +30,33 @@ const Fizics = () => {
         autoRotate={true}
         enablePan={false}
       />
-      <mesh castShadow receiveShadow position-x={-2} position-y={4.5}>
-        <sphereGeometry />
-        <meshStandardMaterial color="orange" />
-      </mesh>
-      <mesh
-        castShadow
-        receiveShadow
-        ref={boxRef}
-        scale={1}
-        position={[2, 3.5, 2]}>
-        <boxGeometry />
-        <meshStandardMaterial color="purple" />
-      </mesh>
-      <mesh
-        castShadow
-        receiveShadow
-        position-y={-1}
-        scale={[10, 10, 1]}
-        rotation-x={-Math.PI * 0.5}>
-        <boxGeometry />
-        <meshStandardMaterial color="green" />
-      </mesh>
+      <Physics>
+        <RigidBody>
+          <mesh castShadow receiveShadow position-x={-2} position-y={4.5}>
+            <sphereGeometry />
+            <meshStandardMaterial color="orange" />
+          </mesh>
+        </RigidBody>
+
+        <RigidBody>
+          <mesh castShadow receiveShadow scale={1} position={[2, 3.5, 2]}>
+            <boxGeometry />
+            <meshStandardMaterial color="purple" />
+          </mesh>
+        </RigidBody>
+
+        <RigidBody mass={0} type="fixed">
+          <mesh
+            castShadow
+            receiveShadow
+            position-y={-1}
+            scale={[10, 10, 1]}
+            rotation-x={-Math.PI * 0.5}>
+            <boxGeometry />
+            <meshStandardMaterial color="green" />
+          </mesh>
+        </RigidBody>
+      </Physics>
     </>
   );
 };
