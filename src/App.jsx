@@ -9,6 +9,7 @@ import Portal from "./Portal";
 import Keys from "./Keys";
 import Postproc from "./Postproc";
 import Portfolio from "./Portfolio";
+import Fizics from "./Fizics";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         top: "0px",
       }}>
       <Canvas flat>
-        <Portfolio />
+        <Fizics />
       </Canvas>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import { useRef } from "react";
 
 const Fizics = () => {
   const boxRef = useRef();
