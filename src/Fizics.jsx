@@ -1,5 +1,5 @@
 import { useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Html } from "@react-three/drei";
 import { useRef } from "react";
 
 const Fizics = () => {
@@ -8,7 +8,6 @@ const Fizics = () => {
   useFrame((state, delta) => {
     boxRef.current.rotation.y += delta * 2;
   });
-
   return (
     <>
       <directionalLight />
