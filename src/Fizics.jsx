@@ -31,7 +31,7 @@ const Fizics = () => {
 
       <Physics gravity={[0, -9.81, 0]}>
         <RigidBody type="dynamic" colliders="ball" position={[0, 2, 0]}>
-          <mesh castShadow receiveShadow scale={0.7}>
+          <mesh castShadow receiveShadow scale={0.5}>
             <sphereGeometry />
             <meshStandardMaterial color="orange" />
           </mesh>
