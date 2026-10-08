@@ -30,7 +30,7 @@ const Fizics = () => {
       />
 
       <Physics gravity={[0, -9.81, 0]}>
-        <RigidBody type="fixed" colliders="ball" position={[0, 1.7, 0]}>
+        <RigidBody type="dynamic" colliders="ball" position={[0, 2, 0]}>
           <mesh castShadow receiveShadow scale={0.7}>
             <sphereGeometry />
             <meshStandardMaterial color="orange" />
@@ -38,6 +38,7 @@ const Fizics = () => {
         </RigidBody>
 
         <RigidBody
+          type="dynamic"
           colliders="trimesh"
           angularVelocity={[0, 2.5, 1.4]}
           position={[0, 5, 0]}>
@@ -48,6 +49,7 @@ const Fizics = () => {
         </RigidBody>
 
         <RigidBody
+          type="dynamic"
           colliders="cuboid"
           angularVelocity={[1.6, 2, 0.8]}
           position={[1.6, 5, 2]}>
@@ -57,12 +59,8 @@ const Fizics = () => {
           </mesh>
         </RigidBody>
 
-        <RigidBody type="fixed" colliders="cuboid" position={[0, 0.7, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            scale={[10, 10, 1]}
-            rotation-x={-Math.PI * 0.5}>
+        <RigidBody type="fixed" colliders="cuboid" position={[0, -1, 0]}>
+          <mesh castShadow receiveShadow scale={[20, 1, 20]}>
             <boxGeometry />
             <meshStandardMaterial color="green" />
           </mesh>
