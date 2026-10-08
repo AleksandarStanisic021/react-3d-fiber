@@ -39,7 +39,7 @@ const Fizics = () => {
 
         <RigidBody
           type="dynamic"
-          colliders="trimesh"
+          colliders="hull"
           angularVelocity={[0, 2.5, 1.4]}
           position={[0, 5, 0]}>
           <mesh castShadow receiveShadow scale={1}>
