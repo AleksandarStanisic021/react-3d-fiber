@@ -41,6 +41,13 @@ const Fizics = () => {
           </mesh>
         </RigidBody>
 
+        <RigidBody type="dynamic" colliders="ball" position={[1, 2, 0]}>
+          <mesh castShadow receiveShadow scale={0.5}>
+            <sphereGeometry />
+            <meshStandardMaterial color="purple" />
+          </mesh>
+        </RigidBody>
+
         <RigidBody
           restitution={1}
           type="dynamic"
