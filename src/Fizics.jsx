@@ -1,12 +1,10 @@
-import { useFrame } from "@react-three/fiber";
-import { OrbitControls, Html } from "@react-three/drei";
-import { useRef } from "react";
+import { OrbitControls } from "@react-three/drei";
 import { Physics, RigidBody } from "@react-three/rapier";
 
 const Fizics = () => {
   return (
     <>
-      <ambientLight color="azure" intensity={0.8} />
+      <ambientLight color="red" intensity={0.8} />
       <directionalLight
         castShadow
         position={[4, 8, 5]}
@@ -31,61 +29,42 @@ const Fizics = () => {
         enablePan={false}
       />
 
-      <Physics>
-        <RigidBody>
-          <mesh
-            castShadow
-            receiveShadow
-            scale={0.5}
-            position-x={-2}
-            position-y={4.5}>
+      <Physics gravity={[0, -9.81, 0]}>
+        <RigidBody type="dynamic" colliders="ball" position={[0, 1.7, 0]}>
+          <mesh castShadow receiveShadow scale={0.5}>
             <sphereGeometry />
             <meshStandardMaterial color="orange" />
           </mesh>
         </RigidBody>
 
-        <RigidBody>
-          <mesh
-            castShadow
-            receiveShadow
-            scale={0.5}
-            position-x={-1.5}
-            position-y={5}>
-            <sphereGeometry />
-            <meshStandardMaterial color="blue" />
-          </mesh>
-        </RigidBody>
-
-        <RigidBody>
-          <mesh castShadow receiveShadow scale={1} position={[2, 3.5, 2]}>
-            <boxGeometry />
-            <meshStandardMaterial color="purple" />
-          </mesh>
-        </RigidBody>
-
-        <RigidBody>
-          <mesh castShadow receiveShadow scale={1} position={[1.8, 4, 2]}>
-            <boxGeometry />
+        <RigidBody
+          colliders="trimesh"
+          angularVelocity={[0, 2.5, 1.4]}
+          position={[-1.6, 5, 2]}>
+          <mesh castShadow receiveShadow scale={1}>
+            <torusGeometry args={[0.5, 0.2, 16, 32]} />
             <meshStandardMaterial color="red" />
           </mesh>
         </RigidBody>
 
-        <RigidBody>
-          <mesh castShadow receiveShadow scale={1} position={[1.6, 5, 2]}>
+        <RigidBody
+          colliders="cuboid"
+          angularVelocity={[1.6, 2, 0.8]}
+          position={[1.6, 5, 2]}>
+          <mesh castShadow receiveShadow scale={1}>
             <boxGeometry />
             <meshStandardMaterial color="blue" />
           </mesh>
         </RigidBody>
 
-        <RigidBody mass={0} type="fixed">
+        <RigidBody type="fixed" colliders="cuboid" position={[0, 0.7, 0]}>
           <mesh
             castShadow
             receiveShadow
-            position-y={-1}
             scale={[10, 10, 1]}
             rotation-x={-Math.PI * 0.5}>
             <boxGeometry />
-            <meshStandardMaterial color="darkgreen" />
+            <meshStandardMaterial color="green" />
           </mesh>
         </RigidBody>
       </Physics>
