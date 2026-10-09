@@ -5,9 +5,7 @@ import { useEffect, useRef } from "react";
 const Fizics = () => {
   const box = useRef();
 
-  useEffect(() => {
-    console.log(box.current);
-  }, []);
+  useEffect(() => {}, []);
 
   const cubeJump = () => {
     box.current.applyImpulse({ x: 0, y: 5, z: 0 });
