@@ -1,7 +1,12 @@
 import { OrbitControls } from "@react-three/drei";
 import { Physics, RigidBody } from "@react-three/rapier";
+import { useEffect, useRef } from "react";
 
 const Fizics = () => {
+  const box = useRef();
+
+  console.log(box.current);
+
   return (
     <>
       <ambientLight color="red" intensity={0.8} />
