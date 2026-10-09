@@ -1,4 +1,5 @@
 uniform float uTime;
+uniform float uImpact;
 
 varying vec2 vUv;
 varying vec3 vLocalPosition;
@@ -28,6 +29,8 @@ void main() {
   color += cyan * bands * 1.8;
   color += vec3(0.65, 0.9, 1.0) * travelingPulse * 1.5;
   color += mix(violet, cyan, lengthGradient) * fresnel * 1.4;
+  color += cyan * uImpact * 1.8;
+  color = mix(color, vec3(1.0), clamp(uImpact * 0.55, 0.0, 0.9));
 
   gl_FragColor = vec4(color, 1.0);
 }
