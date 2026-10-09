@@ -29,59 +29,30 @@ const Fizics = () => {
         enablePan={false}
       />
 
-      <Physics gravity={[0, -9.81, 0]}>
-        <RigidBody
-          restitution={1}
-          type="dynamic"
-          colliders="ball"
-          position={[0, 2, 0]}>
-          <mesh castShadow receiveShadow scale={0.5}>
-            <sphereGeometry />
-            <meshStandardMaterial color="orange" />
-          </mesh>
-        </RigidBody>
+      <mesh castShadow receiveShadow scale={0.5}>
+        <sphereGeometry />
+        <meshStandardMaterial color="orange" />
+      </mesh>
 
-        <RigidBody type="dynamic" colliders="ball" position={[1, 2, 0]}>
-          <mesh castShadow receiveShadow scale={0.5}>
-            <sphereGeometry />
-            <meshStandardMaterial color="purple" />
-          </mesh>
-        </RigidBody>
+      <mesh castShadow receiveShadow scale={0.5}>
+        <sphereGeometry />
+        <meshStandardMaterial color="purple" />
+      </mesh>
 
-        <RigidBody
-          restitution={1}
-          type="dynamic"
-          colliders="hull"
-          angularVelocity={[0, 2.5, 1.4]}
-          position={[0, 5, 0]}>
-          <mesh castShadow receiveShadow scale={1}>
-            <torusGeometry args={[0.5, 0.2, 16, 32]} />
-            <meshStandardMaterial color="red" />
-          </mesh>
-        </RigidBody>
+      <mesh castShadow receiveShadow scale={1}>
+        <torusGeometry args={[0.5, 0.2, 16, 32]} />
+        <meshStandardMaterial color="red" />
+      </mesh>
 
-        <RigidBody
-          type="dynamic"
-          colliders="cuboid"
-          angularVelocity={[1.6, 2, 0.8]}
-          position={[1.6, 5, 2]}>
-          <mesh castShadow receiveShadow scale={1}>
-            <boxGeometry />
-            <meshStandardMaterial color="blue" />
-          </mesh>
-        </RigidBody>
+      <mesh castShadow receiveShadow scale={1}>
+        <boxGeometry />
+        <meshStandardMaterial color="blue" />
+      </mesh>
 
-        <RigidBody
-          restitution={1}
-          type="fixed"
-          colliders="cuboid"
-          position={[0, -1, 0]}>
-          <mesh castShadow receiveShadow scale={[20, 1, 20]}>
-            <boxGeometry />
-            <meshStandardMaterial color="green" />
-          </mesh>
-        </RigidBody>
-      </Physics>
+      <mesh castShadow receiveShadow scale={[20, 1, 20]}>
+        <boxGeometry />
+        <meshStandardMaterial color="green" />
+      </mesh>
     </>
   );
 };
