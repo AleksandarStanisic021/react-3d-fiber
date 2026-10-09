@@ -7,7 +7,9 @@ import {
   RigidBody,
 } from "@react-three/rapier";
 import { button, useControls } from "leva";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import twisterVertexShader from "./shaders/twister/vertex.glsl?raw";
+import twisterFragmentShader from "./shaders/twister/fragment.glsl?raw";
 
 const Fizics = () => {
   const box = useRef(null);
@@ -17,6 +19,12 @@ const Fizics = () => {
   const nextInstanceId = useRef(0);
   const stressInstances = useRef([]);
   const [stressInstancesState, setStressInstances] = useState([]);
+  const twisterUniforms = useMemo(
+    () => ({
+      uTime: { value: 0 },
+    }),
+    [],
+  );
 
   const [, setStressControls] = useControls(
     "Physics stress test",
@@ -70,7 +78,28 @@ const Fizics = () => {
     [],
   );
 
+  const stressBodies = useMemo(() => {
+    if (stressInstancesState.length === 0) return null;
+
+    return (
+      <InstancedRigidBodies
+        instances={stressInstancesState}
+        colliders="cuboid"
+        restitution={0.2}
+        friction={0.8}>
+        <instancedMesh
+          args={[undefined, undefined, stressInstancesState.length]}
+          castShadow
+          receiveShadow>
+          <boxGeometry />
+          <meshStandardMaterial color="orange" />
+        </instancedMesh>
+      </InstancedRigidBodies>
+    );
+  }, [stressInstancesState]);
+
   useFrame((_, delta) => {
+    twisterUniforms.uTime.value += delta;
     if (!twister.current) return;
 
     twisterAngle.current += delta;
@@ -173,29 +202,22 @@ const Fizics = () => {
           <CuboidCollider args={[9.75, 5, 0.25]} position={[0, 5, -9.75]} />
           <CuboidCollider args={[9.75, 5, 0.25]} position={[0, 5, 9.75]} />
         </RigidBody>
-        {stressInstancesState.length > 0 && (
-          <InstancedRigidBodies
-            instances={stressInstancesState}
-            colliders="cuboid"
-            restitution={0.2}
-            friction={0.8}>
-            <instancedMesh
-              args={[undefined, undefined, stressInstancesState.length]}
-              castShadow
-              receiveShadow>
-              <boxGeometry />
-              <meshStandardMaterial color="orange" />
-            </instancedMesh>
-          </InstancedRigidBodies>
-        )}
+        {stressBodies}
         <RigidBody
           ref={twister}
           type="kinematicPosition"
+          colliders={false}
           position={[0, 1, 0]}
           friction={1}>
-          <mesh scale={[4, 1, 1]} castShadow receiveShadow>
-            <boxGeometry />
-            <meshStandardMaterial color="blue" />
+          <CuboidCollider args={[6, 0.4, 0.4]} />
+          <mesh castShadow receiveShadow>
+            <boxGeometry args={[12, 0.8, 0.8]} />
+            <shaderMaterial
+              vertexShader={twisterVertexShader}
+              fragmentShader={twisterFragmentShader}
+              uniforms={twisterUniforms}
+              toneMapped={false}
+            />
           </mesh>
         </RigidBody>
       </Physics>
