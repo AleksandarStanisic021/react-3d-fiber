@@ -22,37 +22,46 @@ const Fizics = () => {
       <OrbitControls
         enableDamping
         dampingFactor={0.05}
-        maxPolarAngle={Math.PI / 1.9}
-        minDistance={3}
-        maxDistance={12}
         autoRotate={true}
         enablePan={false}
       />
+      <Physics>
+        <RigidBody>
+          <mesh castShadow receiveShadow scale={0.5} position={[-2, 6, 0]}>
+            <sphereGeometry />
+            <meshStandardMaterial color="orange" />
+          </mesh>
+        </RigidBody>
 
-      <mesh castShadow receiveShadow scale={0.5} position={[0, 4, 0]}>
-        <sphereGeometry />
-        <meshStandardMaterial color="orange" />
-      </mesh>
+        <RigidBody>
+          <mesh castShadow receiveShadow scale={0.5} position={[2, 1, 0]}>
+            <sphereGeometry />
+            <meshStandardMaterial color="purple" />
+          </mesh>
+        </RigidBody>
 
-      <mesh castShadow receiveShadow scale={0.5} position={[2, 1, 0]}>
-        <sphereGeometry />
-        <meshStandardMaterial color="purple" />
-      </mesh>
+        <RigidBody>
+          <mesh castShadow receiveShadow scale={1} position={[2, 5, 0]}>
+            <torusGeometry args={[0.5, 0.2, 16, 32]} />
+            <meshStandardMaterial color="red" />
+          </mesh>
+        </RigidBody>
 
-      <mesh castShadow receiveShadow scale={1} position={[2, 5, 0]}>
-        <torusGeometry args={[0.5, 0.2, 16, 32]} />
-        <meshStandardMaterial color="red" />
-      </mesh>
+        <RigidBody>
+          <mesh castShadow receiveShadow position={[2, 3, 0]} scale={1}>
+            <boxGeometry />
+            <meshStandardMaterial color="blue" />
+          </mesh>
+        </RigidBody>
 
-      <mesh castShadow receiveShadow position={[2, 3, 0]} scale={1}>
-        <boxGeometry />
-        <meshStandardMaterial color="blue" />
-      </mesh>
-
-      <mesh castShadow receiveShadow scale={[20, 1, 20]}>
-        <boxGeometry />
-        <meshStandardMaterial color="green" />
-      </mesh>
+        <RigidBody type="fixed">
+          <mesh castShadow receiveShadow scale={[20, 1, 20]}>
+            <boxGeometry />
+            <meshStandardMaterial color="green" />
+          </mesh>
+        </RigidBody>
+        
+      </Physics>
     </>
   );
 };
