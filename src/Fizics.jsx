@@ -14,6 +14,7 @@ import twisterFragmentShader from "./shaders/twister/fragment.glsl?raw";
 const Fizics = () => {
   const box = useRef(null);
   const twister = useRef(null);
+  const twisterMaterial = useRef(null);
   const twisterAngle = useRef(0);
   const batchSize = useRef(100);
   const nextInstanceId = useRef(0);
@@ -98,8 +99,10 @@ const Fizics = () => {
     );
   }, [stressInstancesState]);
 
-  useFrame((_, delta) => {
-    twisterUniforms.uTime.value += delta;
+  useFrame(({ clock }, delta) => {
+    if (twisterMaterial.current) {
+      twisterMaterial.current.uniforms.uTime.value = clock.elapsedTime;
+    }
     if (!twister.current) return;
 
     twisterAngle.current += delta;
@@ -213,6 +216,7 @@ const Fizics = () => {
           <mesh castShadow receiveShadow>
             <boxGeometry args={[12, 0.8, 0.8]} />
             <shaderMaterial
+              ref={twisterMaterial}
               vertexShader={twisterVertexShader}
               fragmentShader={twisterFragmentShader}
               uniforms={twisterUniforms}
