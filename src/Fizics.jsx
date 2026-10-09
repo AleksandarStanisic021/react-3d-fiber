@@ -5,7 +5,18 @@ import { useEffect, useRef } from "react";
 const Fizics = () => {
   const box = useRef();
 
-  console.log(box.current);
+  useEffect(() => {
+    console.log(box.current);
+  }, []);
+
+  const cubeJump = () => {
+    box.current.applyImpulse({ x: 0, y: 5, z: 0 });
+    box.current.applyTorqueImpulse({
+      x: Math.random() * 2 - 1,
+      y: 1,
+      z: Math.random() * 2 - 1,
+    });
+  };
 
   return (
     <>
@@ -52,8 +63,13 @@ const Fizics = () => {
           </mesh>
         </RigidBody>
 
-        <RigidBody colliders="cuboid">
-          <mesh castShadow receiveShadow position={[2, 3, 0]} scale={1}>
+        <RigidBody ref={box} colliders="cuboid">
+          <mesh
+            onClick={cubeJump}
+            castShadow
+            receiveShadow
+            position={[2, 3, 0]}
+            scale={1}>
             <boxGeometry />
             <meshStandardMaterial color="red" />
           </mesh>
