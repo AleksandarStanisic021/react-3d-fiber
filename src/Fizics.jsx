@@ -26,41 +26,40 @@ const Fizics = () => {
         enablePan={false}
       />
       <Physics>
-        <RigidBody>
+        <RigidBody colliders="ball">
           <mesh castShadow receiveShadow scale={0.5} position={[-2, 6, 0]}>
             <sphereGeometry />
             <meshStandardMaterial color="orange" />
           </mesh>
         </RigidBody>
 
-        <RigidBody>
+        <RigidBody colliders="ball">
           <mesh castShadow receiveShadow scale={0.5} position={[2, 1, 0]}>
             <sphereGeometry />
             <meshStandardMaterial color="purple" />
           </mesh>
         </RigidBody>
 
-        <RigidBody>
+        <RigidBody colliders="trimesh">
           <mesh castShadow receiveShadow scale={1} position={[2, 5, 0]}>
             <torusGeometry args={[0.5, 0.2, 16, 32]} />
             <meshStandardMaterial color="red" />
           </mesh>
         </RigidBody>
 
-        <RigidBody>
+        <RigidBody colliders="cuboid">
           <mesh castShadow receiveShadow position={[2, 3, 0]} scale={1}>
             <boxGeometry />
             <meshStandardMaterial color="blue" />
           </mesh>
         </RigidBody>
 
-        <RigidBody type="fixed">
+        <RigidBody colliders="cuboid" type="fixed">
           <mesh castShadow receiveShadow scale={[20, 1, 20]}>
             <boxGeometry />
             <meshStandardMaterial color="green" />
           </mesh>
         </RigidBody>
-        
       </Physics>
     </>
   );
