@@ -29,22 +29,22 @@ const Fizics = () => {
         enablePan={false}
       />
 
-      <mesh castShadow receiveShadow scale={0.5} position={[0, 1, 0]}>
+      <mesh castShadow receiveShadow scale={0.5} position={[0, 4, 0]}>
         <sphereGeometry />
         <meshStandardMaterial color="orange" />
       </mesh>
 
-      <mesh castShadow receiveShadow scale={0.5} position={[-3, 1, 0]}>
+      <mesh castShadow receiveShadow scale={0.5} position={[2, 1, 0]}>
         <sphereGeometry />
         <meshStandardMaterial color="purple" />
       </mesh>
 
-      <mesh castShadow receiveShadow scale={1} position={[2, 1.2, 0]}>
+      <mesh castShadow receiveShadow scale={1} position={[2, 5, 0]}>
         <torusGeometry args={[0.5, 0.2, 16, 32]} />
         <meshStandardMaterial color="red" />
       </mesh>
 
-      <mesh castShadow receiveShadow position={[5, 1, 0]} scale={1}>
+      <mesh castShadow receiveShadow position={[2, 3, 0]} scale={1}>
         <boxGeometry />
         <meshStandardMaterial color="blue" />
       </mesh>
