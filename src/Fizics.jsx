@@ -1,9 +1,33 @@
 import { OrbitControls } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import { Physics, RigidBody } from "@react-three/rapier";
 import { useRef } from "react";
 
 const Fizics = () => {
   const box = useRef(null);
+  const twister = useRef(null);
+  const twisterAngle = useRef(0);
+
+  useFrame((_, delta) => {
+    if (!twister.current) return;
+
+    twisterAngle.current += delta;
+    const angle = twisterAngle.current;
+    const halfAngle = angle / 2;
+    const radius = 3;
+
+    twister.current.setNextKinematicTranslation({
+      x: Math.cos(angle) * radius,
+      y: 1,
+      z: Math.sin(angle) * radius,
+    });
+    twister.current.setNextKinematicRotation({
+      x: 0,
+      y: Math.sin(halfAngle),
+      z: 0,
+      w: Math.cos(halfAngle),
+    });
+  });
 
   const cubeJump = (event) => {
     event.stopPropagation();
@@ -43,7 +67,7 @@ const Fizics = () => {
       />
       <Physics>
         <RigidBody colliders="ball" restitution={1} friction={1}>
-          <mesh castShadow receiveShadow scale={0.5} position={[-2, 6, 0]}>
+          <mesh castShadow receiveShadow scale={0.5} position={[-4, 7, 0]}>
             <sphereGeometry />
             <meshStandardMaterial color="orange" />
           </mesh>
@@ -85,7 +109,11 @@ const Fizics = () => {
             <meshStandardMaterial color="green" />
           </mesh>
         </RigidBody>
-        <RigidBody type="kinematicPosition" position={[0, 1, 0]} friction={1}>
+        <RigidBody
+          ref={twister}
+          type="kinematicPosition"
+          position={[0, 1, 0]}
+          friction={1}>
           <mesh scale={[4, 1, 1]} castShadow receiveShadow>
             <boxGeometry />
             <meshStandardMaterial color="blue" />
