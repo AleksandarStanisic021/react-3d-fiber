@@ -43,14 +43,14 @@ const Fizics = () => {
         <RigidBody colliders="trimesh">
           <mesh castShadow receiveShadow scale={1} position={[2, 5, 0]}>
             <torusGeometry args={[0.5, 0.2, 16, 32]} />
-            <meshStandardMaterial color="red" />
+            <meshStandardMaterial color="darkgreen" />
           </mesh>
         </RigidBody>
 
         <RigidBody colliders="cuboid">
           <mesh castShadow receiveShadow position={[2, 3, 0]} scale={1}>
             <boxGeometry />
-            <meshStandardMaterial color="blue" />
+            <meshStandardMaterial color="red" />
           </mesh>
         </RigidBody>
 
